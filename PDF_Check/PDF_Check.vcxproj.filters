@@ -18,5 +18,52 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="pdf-body.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf-header.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf-xref.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf-trailer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="checker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="basic-type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf-body.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf-header.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf-trailer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf-xref.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="analyze-result.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="analyze-report.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="checker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

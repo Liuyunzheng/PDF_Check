@@ -78,7 +78,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="checker.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pdf-body.cpp" />
+    <ClCompile Include="pdf-header.cpp" />
+    <ClCompile Include="pdf-xref.cpp" />
+    <ClCompile Include="pdf-trailer.cpp" />
+    <ClCompile Include="pdf.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="analyze-report.h" />
+    <ClInclude Include="analyze-result.h" />
+    <ClInclude Include="basic-type.h" />
+    <ClInclude Include="checker.h" />
+    <ClInclude Include="pdf-body.h" />
+    <ClInclude Include="pdf-header.h" />
+    <ClInclude Include="pdf-trailer.h" />
+    <ClInclude Include="pdf-xref.h" />
+    <ClInclude Include="pdf.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
