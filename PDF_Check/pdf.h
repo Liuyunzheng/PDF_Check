@@ -19,22 +19,25 @@ public:
 	Pdf(const Bytes& in_data);
 	~Pdf();
 	Pdf(const Pdf& );
+	Pdf(Pdf&&) = delete;
 	Pdf& operator = (const Pdf&);
+	Pdf& operator = (Pdf&&) = delete;
 
 	bool init();
 	Bytes get_data() const;
-	AnalyzeReport analyze_all();
-	AnalyzeResult analyze_header();
-	AnalyzeResult analyze_body();
-	AnalyzeResult analyze_xref();
-	AnalyzeResult analyze_trailer();
+	void show() const;
+	AnalyzeReport analyze_all() const;
+	AnalyzeResult analyze_header() const;
+	AnalyzeResult analyze_body() const;
+	AnalyzeResult analyze_xref() const;
+	AnalyzeResult analyze_trailer() const;
 
 private:
-	Bytes data;
-	std::unique_ptr<PdfHeader> header;
-	std::unique_ptr<PdfBody> body;
-	std::unique_ptr<PdfXref> xref;
-	std::unique_ptr<PdfTrailer> trailer;
+	Bytes _data;
+	std::unique_ptr<PdfHeader> _header;
+	std::unique_ptr<PdfBody> _body;
+	std::unique_ptr<PdfXref> _xref;
+	std::unique_ptr<PdfTrailer> _trailer;
 };
 
 #endif /* end of DETECT_PDF_H_ */

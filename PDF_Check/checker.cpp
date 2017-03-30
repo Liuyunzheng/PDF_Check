@@ -4,13 +4,29 @@
 #include "Checker.h"
 #include "pdf.h"
 
-Pdf&& Checker::read_pdf(const std::wstring& path) {
-	Bytes in_data;
-	Pdf::read(path, in_data);
-	Pdf pdf(in_data);
-	return std::move(pdf);
+Checker::Checker() :_pdf(nullptr) {
+
 }
 
-AnalyzeReport&& Checker::get_report(const std::wstring& path) {
-	return read_pdf(path).analyze_all();
+void Checker::read_pdf(const std::wstring& path) {
+	Bytes in_data;
+	Pdf::read(path, in_data);
+	_pdf.reset(new Pdf(in_data));
+}
+
+AnalyzeReport Checker::get_report(const std::wstring& path) {
+	read_pdf(path);
+	return _pdf->analyze_all();
+}
+
+void Checker::show_pdf_data() const {
+	if (_pdf)
+		_pdf->show();
+}
+
+Bytes Checker::get_pdf_data() const {
+	if (_pdf)
+		return _pdf->get_data();
+	else
+		return Bytes();
 }
