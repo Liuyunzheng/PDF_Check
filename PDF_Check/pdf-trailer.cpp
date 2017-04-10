@@ -1,9 +1,9 @@
 #include <iostream>
 #include "pdf-trailer.h"
-#include "analyze-result.h"
+#include "pdf-analyze-result.h"
 
-AnalyzeResult PdfTrailer::analyze(const Bytes& in_data) {
-	AnalyzeResult result;
+PdfAnalyzeResult PdfTrailer::Analyze(const std::unique_ptr<DataPool>& in_data) {
+	PdfAnalyzeResult result;
 
 	return result;
 }

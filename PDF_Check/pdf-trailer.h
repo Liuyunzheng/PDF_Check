@@ -1,15 +1,15 @@
-#ifndef DETECT_PDFTRAILER_H_
-#define DETECT_PDFTRAILER_H_
+#ifndef DETECT_PDF_TRAILER_H_
+#define DETECT_PDF_TRAILER_H_
 
 #include "basic-type.h"
 
-class AnalyzeResult;
+class PdfAnalyzeResult;
 
 class PdfTrailer {
 public:
 	PdfTrailer() = default;
 	~PdfTrailer() = default;
-	AnalyzeResult analyze(const Bytes& in_data);
+	PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
 };
 
-#endif /* end of DETECT_PDFTRAILER_H_ */
+#endif /* end of DETECT_PDF_TRAILER_H_ */

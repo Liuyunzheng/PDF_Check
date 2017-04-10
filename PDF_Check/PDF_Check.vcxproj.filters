@@ -33,7 +33,13 @@
     <ClCompile Include="pdf.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="checker.cpp">
+    <ClCompile Include="pdf-analyze-report.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf-checker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="data-pool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,13 +62,22 @@
     <ClInclude Include="pdf.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="analyze-result.h">
+    <ClInclude Include="pdf-analyze-report.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="analyze-report.h">
+    <ClInclude Include="pdf-analyze-result.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="checker.h">
+    <ClInclude Include="pdf-checker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf-scan-methods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ac-tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="data-pool.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

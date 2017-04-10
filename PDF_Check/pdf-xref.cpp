@@ -1,9 +1,9 @@
 #include <iostream>
 #include "pdf-xref.h"
-#include "analyze-result.h"
+#include "pdf-analyze-result.h"
 
-AnalyzeResult PdfXref::analyze(const Bytes& in_data) {
-	AnalyzeResult result;
+PdfAnalyzeResult PdfXref::Analyze(const std::unique_ptr<DataPool>& in_data) {
+	PdfAnalyzeResult result;
 
 	return result;
 }

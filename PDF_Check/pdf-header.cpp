@@ -1,9 +1,10 @@
 #include <iostream>
 #include "pdf-header.h"
-#include "analyze-result.h"
+#include "pdf-analyze-result.h"
 
-AnalyzeResult PdfHeader::analyze(const Bytes& in_data) {
-	AnalyzeResult result;
+PdfAnalyzeResult PdfHeader::Analyze(const std::unique_ptr<DataPool>& in_data) {
+	PdfAnalyzeResult result;
+	std::vector<char> header = in_data->get_data(0, 1024); /* pdf 规定pdf头必须出现在前1024字节中 */
 
 	return result;
 }

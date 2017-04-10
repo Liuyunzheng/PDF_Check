@@ -3,41 +3,40 @@
 
 #include <memory>
 #include "basic-type.h"
+#include "data-pool.h"
+#include "pdf-header.h"
+#include "pdf-body.h"
+#include "pdf-xref.h"
+#include "pdf-trailer.h"
 
-class PdfHeader;
-class PdfBody;
-class PdfXref;
-class PdfTrailer;
-class AnalyzeReport;
-class AnalyzeResult;
+class PdfAnalyzeReport;
+class PdfAnalyzeResult;
 
 class Pdf {
 public:
-	static bool read(const std::wstring& path, Bytes& out_data);
-
-public:
-	Pdf(const Bytes& in_data);
-	~Pdf();
-	Pdf(const Pdf& );
+	explicit Pdf(const std::wstring& path);
+	~Pdf() = default;
+	Pdf(const Pdf&) = delete;
 	Pdf(Pdf&&) = delete;
-	Pdf& operator = (const Pdf&);
+	Pdf& operator = (const Pdf&) = delete;
 	Pdf& operator = (Pdf&&) = delete;
 
-	bool init();
-	Bytes get_data() const;
-	void show() const;
-	AnalyzeReport analyze_all() const;
-	AnalyzeResult analyze_header() const;
-	AnalyzeResult analyze_body() const;
-	AnalyzeResult analyze_xref() const;
-	AnalyzeResult analyze_trailer() const;
+	bool Init();
+	bool Read(const std::wstring& path);
+	std::vector<char> get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
+	void Show() const;
+	PdfAnalyzeReport AnalyzeAll() const;
+	PdfAnalyzeResult AnalyzeHeader() const;
+	PdfAnalyzeResult AnalyzeBody() const;
+	PdfAnalyzeResult AnalyzeXref() const;
+	PdfAnalyzeResult AnalyzeTrailer() const;
 
 private:
-	Bytes _data;
-	std::unique_ptr<PdfHeader> _header;
-	std::unique_ptr<PdfBody> _body;
-	std::unique_ptr<PdfXref> _xref;
-	std::unique_ptr<PdfTrailer> _trailer;
+	std::unique_ptr<DataPool> _data{ nullptr };
+	std::unique_ptr<PdfHeader> _header{ nullptr };
+	std::unique_ptr<PdfBody> _body{ nullptr };
+	std::unique_ptr<PdfXref> _xref{ nullptr };
+	std::unique_ptr<PdfTrailer> _trailer{ nullptr };
 };
 
 #endif /* end of DETECT_PDF_H_ */
