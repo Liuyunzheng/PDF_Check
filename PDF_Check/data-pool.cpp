@@ -57,13 +57,16 @@ bool DataPool::saved_in_stack() const {
 }
 
 char DataPool::next() {
-	if (_current_pos >= _file_size) return '\0';
+	if (_current_pos >= _file_size)
+		throw std::out_of_range("DataPool::next()");
 	++_current_pos;
 	return at(_current_pos);
 }
 
 char DataPool::at(unsigned int pos) {
-	if (pos >= _file_size) return '\0';
+	if (pos >= _file_size)
+		throw std::out_of_range("DataPool::at");
+
 	if (saved_in_stack()) {
 		return _cache._data[pos];
 	}
@@ -85,6 +88,8 @@ char DataPool::at(unsigned int pos) {
 void DataPool::set_pos(unsigned int pos) {
 	if (pos <= _file_size)
 		_current_pos = pos;
+	else
+		throw std::out_of_range("DataPool::set_pos()");
 }
 
 std::vector<char> DataPool::get_data(unsigned int begin, unsigned int end) {
