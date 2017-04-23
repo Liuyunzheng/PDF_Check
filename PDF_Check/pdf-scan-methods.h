@@ -6,9 +6,11 @@
 #ifndef DETECT_PDF_SCAN_METHODS_H_
 #define DETECT_PDF_SCAN_METHODS_H_
 
-class PdfScanMethods {
+namespace PDF_CHECK {
+	class PdfScanMethods {
 
-};
+	};
+}
 
 
 #endif /* end of DETECT_PDF_SCAN_METHODS_H_ */

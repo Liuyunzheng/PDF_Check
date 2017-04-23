@@ -4,62 +4,66 @@
 #include "pdf-analyze-result.h"
 #include "pdf-analyze-report.h"
 
-bool Pdf::Read(const std::wstring& path) {
-	return _data->Read(path);
-}
+namespace PDF_CHECK {
 
-Pdf::Pdf(const std::wstring& path) :_data{ new DataPool{ path } } {
-	Init();
-}
-
-bool Pdf::Init() {
-	try {
-		_header.reset(new PdfHeader{});
-		_body.reset(new PdfBody{});
-		_xref.reset(new PdfXref{});
-		_trailer.reset(new PdfTrailer{});
-	}
-	catch (...) {
-		return false;
+	Pdf::Pdf(const std::wstring& path) :_data{ new DataPool{ path } } {
+		Init();
 	}
 
-	return true;
-}
+	bool Pdf::Init() {
+		try {
+			_header.reset(new PdfHeader{});
+			_body.reset(new PdfBody{});
+			_xref.reset(new PdfXref{});
+			_trailer.reset(new PdfTrailer{});
+		}
+		catch (...) {
+			return false;
+		}
 
-void Pdf::Show() const {
-	_data->Show();
-}
+		return true;
+	}
 
-std::vector<char> Pdf::get_data(unsigned int begin, unsigned int end) const {
-	return _data->get_data(begin, end);
-}
+	bool Pdf::Read(const std::wstring& path) {
+		return _data->Read(path);
+	}
 
-PdfAnalyzeReport Pdf::AnalyzeAll() const{
-	PdfAnalyzeReport report;
-	
-	return report;
-}
 
-PdfAnalyzeResult Pdf::AnalyzeHeader() const {
-	PdfAnalyzeResult result = _header->Analyze(_data);
+	void Pdf::Show() const {
+		_data->Show();
+	}
 
-	return result;
-}
+	std::vector<char> Pdf::get_data(unsigned int begin, unsigned int end) const {
+		return _data->get_data(begin, end);
+	}
 
-PdfAnalyzeResult Pdf::AnalyzeBody() const {
-	PdfAnalyzeResult result = _body->Analyze(_data);
+	PdfAnalyzeReport Pdf::AnalyzeAll() const{
+		PdfAnalyzeReport report;
 
-	return result;
-}
+		return report;
+	}
 
-PdfAnalyzeResult Pdf::AnalyzeXref() const {
-	PdfAnalyzeResult result = _xref->Analyze(_data);
+	PdfAnalyzeResult Pdf::AnalyzeHeader() const {
+		PdfAnalyzeResult result = _header->Analyze(_data);
 
-	return result;
-}
+		return result;
+	}
 
-PdfAnalyzeResult Pdf::AnalyzeTrailer() const{
-	PdfAnalyzeResult result = _trailer->Analyze(_data);
+	PdfAnalyzeResult Pdf::AnalyzeBody() const {
+		PdfAnalyzeResult result = _body->Analyze(_data);
 
-	return result;
+		return result;
+	}
+
+	PdfAnalyzeResult Pdf::AnalyzeXref() const {
+		PdfAnalyzeResult result = _xref->Analyze(_data);
+
+		return result;
+	}
+
+	PdfAnalyzeResult Pdf::AnalyzeTrailer() const{
+		PdfAnalyzeResult result = _trailer->Analyze(_data);
+
+		return result;
+	}
 }

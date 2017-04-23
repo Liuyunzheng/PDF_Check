@@ -3,12 +3,15 @@
 #include "basic-type.h"
 #include "pdf.h"
 
-int main(int argc, char **argv) {
+using namespace PDF_CHECK;
 
-	PdfChecker checker;
+int main(int argc, char **argv) {
 	std::wstring path{ L"F:\\test.pdf" };
-	checker.read_pdf(path);
+	PdfChecker checker{ path };
+	//checker.read_pdf(path);
 	checker.ShowPdfData();
+	
+	_CrtDumpMemoryLeaks();
 	system("pause");
 	return 0;
 }

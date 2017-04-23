@@ -3,5 +3,6 @@
 
 #include <vector>
 #include "data-pool.h"
+#include <crtdbg.h>
 
 #endif /* end of DETECT_BASIC_TYPE_H_ */

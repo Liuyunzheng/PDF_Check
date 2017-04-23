@@ -3,13 +3,15 @@
 
 #include "basic-type.h"
 
-class PdfAnalyzeResult;
+namespace PDF_CHECK {
+	class PdfAnalyzeResult;
 
-class PdfTrailer {
-public:
-	PdfTrailer() = default;
-	~PdfTrailer() = default;
-	PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
-};
+	class PdfTrailer {
+	public:
+		PdfTrailer() = default;
+		~PdfTrailer() = default;
+		PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
+	};
+}
 
 #endif /* end of DETECT_PDF_TRAILER_H_ */

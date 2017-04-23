@@ -3,14 +3,17 @@
 
 #include "basic-type.h"
 
-class PdfAnalyzeResult;
+namespace PDF_CHECK{
 
-class PdfHeader { /* Pdf unit */
-public:
-	PdfHeader() = default;
-	~PdfHeader() = default;
+	class PdfAnalyzeResult;
 
-	PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
-};
+	class PdfHeader { /* Pdf unit */
+	public:
+		PdfHeader() = default;
+		~PdfHeader() = default;
+
+		PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
+	};
+}
 
 #endif /* end of DETECT_PDF_HEADER_H_ */

@@ -3,14 +3,16 @@
 
 #include "basic-type.h"
 
-class PdfAnalyzeResult;
+namespace PDF_CHECK {
 
-class PdfBody {
-public:
-	PdfBody() = default;
-	~PdfBody() = default;
-	PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
-};
+	class PdfAnalyzeResult;
 
+	class PdfBody {
+	public:
+		PdfBody() = default;
+		~PdfBody() = default;
+		PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
+	};
+}
 
 #endif /* end of DETECT_PDF_BODY_H_ */
