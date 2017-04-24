@@ -5,17 +5,48 @@
 #ifndef DETECT_AC_TREE_H_
 #define DETECT_AC_TREE_H_
 
+#include <vector>
+#include "basic-type.h"
+
 namespace PDF_CHECK {
-	struct ACNode {
-		static const unsigned int kCharCnt = 256;
+
+	struct AcNode {
+		static const int kCharCnt = 256;
+		AcNode() : _end{ false }, _len{ 0 } {
+			for (int i = 0; i < kCharCnt; ++i)
+				children[i] = nullptr;
+		}
+
+		~AcNode() {
+			for (int i = 0; i < kCharCnt; ++i) {
+				delete children[i];
+			}
+		}
+
+		AcNode *fail{ nullptr };
+		AcNode *children[kCharCnt];
+		bool _end;
+		unsigned int _len;
 	};
 
 	class AcTree {
+
 	public:
-		void BuildAcTree();
+		AcTree() = default;
+		explicit AcTree(const std::vector<Bytes>& keyword_list);
+		~AcTree() {
+			delete _root;
+		}
+
+		void BuildAcTree(const std::vector<Bytes>& keyword_list);
+		void Show() const;
+
 	private:
-		void _insert_ac_tree();
+		void _insert_ac_tree(const Bytes& keyword);
 		void _BuildAcAutomation();
+
+	private:
+		AcNode *_root{ nullptr };
 	};
 }
 

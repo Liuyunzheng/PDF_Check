@@ -1,19 +1,11 @@
-﻿生成启动时间为 2017/4/23 22:21:43。
-     1>项目“E:\Workspaces\Cplusplus\PDF_Check\PDF_Check\PDF_Check.vcxproj”在节点 2 上(Rebuild 个目标)。
+﻿生成启动时间为 2017/4/24 22:31:15。
+     1>项目“E:\Workspaces\Cplusplus\PDF_Check\PDF_Check\PDF_Check.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "data-pool.cpp" "pdf-analyze-report.cpp" "pdf-checker.cpp" main.cpp "pdf-body.cpp" "pdf-header.cpp" "pdf-xref.cpp" "pdf-trailer.cpp" pdf.cpp
-         pdf.cpp
-         pdf-trailer.cpp
-         pdf-xref.cpp
-         pdf-header.cpp
-         pdf-body.cpp
-         main.cpp
-         pdf-checker.cpp
-         pdf-analyze-report.cpp
-         data-pool.cpp
-         正在生成代码...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "ac-tree.cpp"
+         ac-tree.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.lib" /MACHINE:X86 "Debug\data-pool.obj"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.lib" /MACHINE:X86 "Debug\ac-tree.obj"
+         "Debug\data-pool.obj"
          "Debug\pdf-analyze-report.obj"
          "Debug\pdf-checker.obj"
          Debug\main.obj
@@ -23,8 +15,8 @@
          "Debug\pdf-trailer.obj"
          Debug\pdf.obj
          PDF_Check.vcxproj -> E:\Workspaces\Cplusplus\PDF_Check\Debug\PDF_Check.exe
-     1>已完成生成项目“E:\Workspaces\Cplusplus\PDF_Check\PDF_Check\PDF_Check.vcxproj”(Rebuild 个目标)的操作。
+     1>已完成生成项目“E:\Workspaces\Cplusplus\PDF_Check\PDF_Check\PDF_Check.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:03.14
+已用时间 00:00:00.73

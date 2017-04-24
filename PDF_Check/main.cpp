@@ -1,17 +1,12 @@
 #include <iostream>
-#include "pdf-checker.h"
-#include "basic-type.h"
-#include "pdf.h"
+#include "ac-tree.h"
 
 using namespace PDF_CHECK;
 
 int main(int argc, char **argv) {
-	std::wstring path{ L"F:\\test.pdf" };
-	PdfChecker checker{ path };
-	//checker.read_pdf(path);
-	checker.ShowPdfData();
-	
-	_CrtDumpMemoryLeaks();
+	std::vector<Bytes> keyword{ { 'a', 'b', 'c' }, { 'c', 'b', 'a' } };
+	AcTree tree{ keyword };
+	tree.Show();
 	system("pause");
 	return 0;
 }

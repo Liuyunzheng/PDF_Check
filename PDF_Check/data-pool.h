@@ -33,6 +33,7 @@ namespace PDF_CHECK {
 		char next(); /* 会修改_current_pos 指针 */
 		char at(unsigned int);
 		void set_pos(unsigned int pos = 0); /* 指定_current_pos的位置 */
+		unsigned int current_pos() const { return _current_pos; }
 		size_t Size() const {
 			return _file_size;
 		}
