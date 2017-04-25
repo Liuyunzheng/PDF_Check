@@ -89,7 +89,7 @@
     <ClCompile Include="pdf-xref.cpp" />
     <ClCompile Include="pdf-trailer.cpp" />
     <ClCompile Include="pdf.cpp" />
-    <ClCompile Include="ScanResult.cpp" />
+    <ClCompile Include="scan-result.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ac-scanner.h" />

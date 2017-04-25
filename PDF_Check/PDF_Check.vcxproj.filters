@@ -48,7 +48,7 @@
     <ClCompile Include="ac-scanner.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ScanResult.cpp">
+    <ClCompile Include="scan-result.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
