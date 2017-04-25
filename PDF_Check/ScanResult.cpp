@@ -4,29 +4,39 @@
 namespace PDF_CHECK {
 
 	void ScanResult::Add(unsigned int offset, const Bytes& keyword) {
-		offsets.push_back(offset);
-		keywords.push_back(keyword);
+		off_key_pairs.insert({ offset, keyword });
 	}
 
 	void ScanResult::Clear() {
-		offsets.clear();
-		keywords.clear();
+		off_key_pairs.clear();
 	}
 
 	void ScanResult::Show() const {
 		std::cout << "\n<<ScanResult::Show>>\n";
 		
-		unsigned int len = offsets.size();
-		if (len == 0)
-			std::cout << "ScanResult is empty" << std::endl;
-
-		for (unsigned int i = 0; i < len; i++) {
-			std::cout << "offset: " << offsets[i] << std::ends << "keyword: ";
-			for (auto& chr : keywords[i])
+		for (auto& pair : off_key_pairs) {
+			std::cout << "offset: " << pair.first << " keyword: ";
+			for (auto& chr : pair.second)
 				std::cout << chr;
 			std::cout << std::endl;
 		}
-
 		std::cout << "<<ScanResult::Show End>>\n";
+	}
+
+	std::vector<unsigned int> ScanResult::Find(const Bytes& keyword) const {
+		std::vector<unsigned int> offsets;
+		for (auto& pair : off_key_pairs) {
+			if (pair.second == keyword)
+				offsets.push_back(pair.first);
+		}
+		return offsets;
+	}
+
+	Bytes ScanResult::Find(unsigned int offset) const {
+		for (auto& pair : off_key_pairs) {
+			if (pair.first == offset)
+				return pair.second;
+		}
+		return Bytes{};
 	}
 }

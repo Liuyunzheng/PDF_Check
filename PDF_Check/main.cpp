@@ -18,6 +18,16 @@ int main(int argc, char **argv) {
 	ScanResult result = scanner.Scan(tree, data);
 	result.Show();
 
+	std::vector<unsigned int> offsets = result.Find({ 'a', 'b', 'c' });
+	for (auto& offset : offsets)
+		std::cout << offset << std::endl;
+	
+	for each (char var in result.Find(8))
+	{
+		std::cout << var;
+	}
+	std::cout << std::endl;
+
 	system("pause");
 	return 0;
 }
