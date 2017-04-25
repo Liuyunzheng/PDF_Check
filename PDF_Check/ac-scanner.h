@@ -11,7 +11,7 @@ namespace PDF_CHECK {
 
 	class AcScanner {	
 	public:
-		ScanResult Scan(const AcTree& tree, const DataPool& data) const;
+		ScanResult Scan(const AcTree& tree, const DataPool& data, unsigned int begin = 0, unsigned int end = 0) const;
 	};
 }
 
