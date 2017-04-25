@@ -45,6 +45,12 @@
     <ClCompile Include="ac-tree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ac-scanner.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanResult.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basic-type.h">
@@ -84,6 +90,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ac-scanner.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scan-result.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

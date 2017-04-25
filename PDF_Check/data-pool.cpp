@@ -35,12 +35,12 @@ namespace PDF_CHECK {
 		try {
 			_file_size = static_cast<size_t>(_pbuf->pubseekoff(0, std::ios::end)); /* record file size */
 			_pbuf->pubseekpos(0, std::ios::in);
-			if (_file_size < FILE_SIZE) { /* read data into buffer (如果文档小于FILE_SIZE Bytes直接存储在_data中，内存访问更快) */
+			if (_file_size < CACHE_SIZE) { /* read data into buffer (如果文档小于CACHE_SIZE Bytes直接存储在_data中，内存访问更快) */
 				_pbuf->sgetn(_cache._data, _file_size);
 				_cache._data[_file_size] = '\0';
 				_cache.set_boader(0, _file_size);
 			}
-			else {  /* read by _pbuf later (文件大于或等于FILE_SIZE Bytes时，通过_pbuf指针读取，速度会慢一些，但是省内存) */
+			else {  /* read by _pbuf later (文件大于或等于CACHE_SIZE Bytes时，通过_pbuf指针读取，速度会慢一些，但是省内存) */
 				_pbuf->pubseekpos(0, std::ios::in);
 			}
 
@@ -52,24 +52,28 @@ namespace PDF_CHECK {
 		return true;
 	}
 
-	void DataPool::Show() {
+	void DataPool::Show() const {
 		for (unsigned int i = 0; i < _file_size; ++i)
 			std::cout << at(i);
 		std::cout << std::endl;
 	}
 
 	bool DataPool::saved_in_stack() const {
-		return _file_size < FILE_SIZE; /* 没毛病， 最多可以记录FILE_SIZE-1 Bytes数据到 _data,因为多了一个 '\0' */
+		return _file_size < CACHE_SIZE; /* 没毛病， 最多可以记录CACHE_SIZE-1 Bytes数据到 _data,因为多了一个 '\0' */
 	}
 
-	char DataPool::next() {
+	char DataPool::next() const {
 		if (_current_pos >= _file_size)
 			throw std::out_of_range("DataPool::next()");
 		++_current_pos;
 		return at(_current_pos);
 	}
 
-	char DataPool::at(unsigned int pos) {
+	char DataPool::operator[](unsigned int pos) const {
+		return at(pos);
+	}
+
+	char DataPool::at(unsigned int pos) const {
 		if (pos >= _file_size)
 			throw std::out_of_range("DataPool::at");
 
@@ -82,7 +86,7 @@ namespace PDF_CHECK {
 			else { /* 提高命中率，避免多次读文件 */
 				_pbuf->pubseekpos(pos, std::ios::in);
 				unsigned int len = _file_size - pos;
-				len = (len >= FILE_SIZE ? FILE_SIZE - 1 : len);
+				len = (len >= CACHE_SIZE ? CACHE_SIZE - 1 : len);
 				_pbuf->sgetn(_cache._data, len);
 				_cache._data[len] = '\0';
 				_cache.set_boader(pos, pos + len + 1);
@@ -98,7 +102,7 @@ namespace PDF_CHECK {
 			throw std::out_of_range("DataPool::set_pos()");
 	}
 
-	std::vector<char> DataPool::get_data(unsigned int begin, unsigned int end) {
+	std::vector<char> DataPool::get_data(unsigned int begin, unsigned int end) const {
 		std::vector<char> data;
 		end = (end >= _file_size ? _file_size : end);
 		for (unsigned int i = begin; i <= end; ++i)

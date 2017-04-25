@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ac-scanner.cpp" />
     <ClCompile Include="ac-tree.cpp" />
     <ClCompile Include="data-pool.cpp" />
     <ClCompile Include="pdf-analyze-report.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="pdf-xref.cpp" />
     <ClCompile Include="pdf-trailer.cpp" />
     <ClCompile Include="pdf.cpp" />
+    <ClCompile Include="ScanResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ac-scanner.h" />
@@ -103,6 +105,7 @@
     <ClInclude Include="pdf-trailer.h" />
     <ClInclude Include="pdf-xref.h" />
     <ClInclude Include="pdf.h" />
+    <ClInclude Include="scan-result.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

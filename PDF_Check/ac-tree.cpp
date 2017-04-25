@@ -15,6 +15,8 @@ namespace PDF_CHECK {
 	}
 
 	void AcTree::Show() const{
+		std::cout << "\n<<AcTree::Show>>\n";
+
 		AcNode *ptr = _root;
 		std::queue< std::pair<int, AcNode *> > q;
 		int cur_level = 0;
@@ -39,6 +41,8 @@ namespace PDF_CHECK {
 				}
 			}
 		}
+
+		std::cout << "<<AcTree::Show End>>\n";
 	}
 
 	void AcTree::_insert_ac_tree(const Bytes& keyword) {
@@ -50,6 +54,7 @@ namespace PDF_CHECK {
 		}
 		cur->_end = true;
 		cur->_len = keyword.size();
+		cur->_type = keyword;
 	}
 
 	void AcTree::_BuildAcAutomation() {
