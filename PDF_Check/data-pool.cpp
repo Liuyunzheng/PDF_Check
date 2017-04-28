@@ -35,12 +35,12 @@ namespace PDF_CHECK {
 		try {
 			_file_size = static_cast<size_t>(_pbuf->pubseekoff(0, std::ios::end)); /* record file size */
 			_pbuf->pubseekpos(0, std::ios::in);
-			if (_file_size < CACHE_SIZE) { /* read data into buffer (如果文档小于CACHE_SIZE Bytes直接存储在_data中，内存访问更快) */
+			if (_file_size < kCacheSize) { /* read data into buffer (如果文档小于kCacheSize Bytes直接存储在_data中，内存访问更快) */
 				_pbuf->sgetn(_cache._data, _file_size);
 				_cache._data[_file_size] = '\0';
 				_cache.set_boader(0, _file_size);
 			}
-			else {  /* read by _pbuf later (文件大于或等于CACHE_SIZE Bytes时，通过_pbuf指针读取，速度会慢一些，但是省内存) */
+			else {  /* read by _pbuf later (文件大于或等于kCacheSize Bytes时，通过_pbuf指针读取，速度会慢一些，但是省内存) */
 				_pbuf->pubseekpos(0, std::ios::in);
 			}
 
@@ -59,7 +59,7 @@ namespace PDF_CHECK {
 	}
 
 	bool DataPool::saved_in_stack() const {
-		return _file_size < CACHE_SIZE; /* 没毛病， 最多可以记录CACHE_SIZE-1 Bytes数据到 _data,因为多了一个 '\0' */
+		return _file_size < kCacheSize; /* 没毛病， 最多可以记录kCacheSize-1 Bytes数据到 _data,因为多了一个 '\0' */
 	}
 
 	char DataPool::next() const {
@@ -86,7 +86,7 @@ namespace PDF_CHECK {
 			else { /* 提高命中率，避免多次读文件 */
 				_pbuf->pubseekpos(pos, std::ios::in);
 				unsigned int len = _file_size - pos;
-				len = (len >= CACHE_SIZE ? CACHE_SIZE - 1 : len);
+				len = (len >= kCacheSize ? kCacheSize - 1 : len);
 				_pbuf->sgetn(_cache._data, len);
 				_cache._data[len] = '\0';
 				_cache.set_boader(pos, pos + len + 1);

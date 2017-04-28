@@ -9,10 +9,10 @@
 namespace PDF_CHECK {
 
 	struct Data {
-		static const unsigned int CACHE_SIZE = 10240; /* when file is smaller than 10KB, the data will be stored in _data (此时直接在栈_data中存储文档内容) */
+		static const unsigned int kCacheSize = 10240; /* when file is smaller than 10KB, the data will be stored in _data (此时直接在栈_data中存储文档内容) */
 		unsigned int _begin;
 		unsigned int _end; /* position of '\0' */
-		char _data[CACHE_SIZE];
+		char _data[kCacheSize];
 		Data() : _begin{ 0 }, _end{ 0 } {}
 		void set_boader(unsigned int begin, unsigned int end) { /* 记录_data中存储的是文中的哪一部分数据：[_begin, _end) */
 			_begin = begin;
@@ -22,7 +22,7 @@ namespace PDF_CHECK {
 
 	class DataPool {
 	private:
-		static const unsigned int CACHE_SIZE = Data::CACHE_SIZE;
+		static const unsigned int kCacheSize = Data::kCacheSize;
 	public:
 		explicit DataPool(const std::wstring& path);
 		~DataPool();

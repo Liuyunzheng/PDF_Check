@@ -8,6 +8,8 @@ namespace PDF_CHECK{
 	class PdfAnalyzeResult;
 
 	class PdfHeader { /* Pdf unit */
+	private:
+		static const std::vector<Bytes> kKeyWordList;
 	public:
 		PdfHeader() = default;
 		~PdfHeader() = default;
