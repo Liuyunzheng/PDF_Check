@@ -16,9 +16,7 @@ namespace PDF_CHECK {
 		
 		for (auto& pair : off_key_pairs) {
 			std::cout << "offset: " << pair.first << " keyword: ";
-			for (auto& chr : pair.second)
-				std::cout << chr;
-			std::cout << std::endl;
+			std::cout << pair.second << std::endl;
 		}
 		std::cout << "<<ScanResult::Show End>>\n";
 	}

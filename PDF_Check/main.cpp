@@ -3,6 +3,7 @@
 #include "data-pool.h"
 #include "ac-scanner.h"
 #include "scan-result.h"
+#include "pdf-checker.h"
 
 using namespace PDF_CHECK;
 
@@ -26,7 +27,11 @@ int main(int argc, char **argv) {
 	{
 		std::cout << var;
 	}
+
 	std::cout << std::endl;
+
+	PdfChecker checker{ L"f:\\test.pdf" };
+	checker.ShowPdfData();
 
 	system("pause");
 	return 0;

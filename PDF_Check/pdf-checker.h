@@ -8,10 +8,10 @@
 #include <iostream>
 #include <memory>
 #include "basic-type.h"
+#include "pdf.h"
 
 namespace PDF_CHECK {
 
-	class Pdf;
 	class PdfAnalyzeReport;
 
 	class PdfChecker {

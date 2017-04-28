@@ -2,7 +2,6 @@
 #include <fstream>
 #include "pdf-analyze-report.h"
 #include "pdf-checker.h"
-#include "pdf.h"
 
 namespace PDF_CHECK {
 
