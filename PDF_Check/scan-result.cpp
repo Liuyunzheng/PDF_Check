@@ -1,5 +1,5 @@
+#include <iostream>
 #include "scan-result.h"
-#include "basic-type.h"
 
 namespace PDF_CHECK {
 

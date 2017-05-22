@@ -2,7 +2,6 @@
 #define DETECT_BASIC_TYPE_H_
 
 #include <string>
-#include "data-pool.h"
 
 namespace PDF_CHECK {
 

@@ -3,7 +3,6 @@
 
 #include <memory>
 #include "basic-type.h"
-#include "data-pool.h"
 #include "pdf-header.h"
 #include "pdf-body.h"
 #include "pdf-xref.h"
@@ -25,7 +24,7 @@ namespace PDF_CHECK {
 
 		bool Init();
 		bool Read(const std::wstring& path);
-		std::vector<char> get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
+		Bytes get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
 		void Show() const;
 		PdfAnalyzeReport AnalyzeAll() const;
 		PdfAnalyzeResult AnalyzeHeader() const;

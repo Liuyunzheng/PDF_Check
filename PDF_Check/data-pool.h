@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <memory>
-#include <vector>
 #include <fstream>
+#include "basic-type.h"
 
 namespace PDF_CHECK {
 
@@ -13,7 +13,10 @@ namespace PDF_CHECK {
 		unsigned int _begin;
 		unsigned int _end; /* position of '\0' */
 		char _data[kCacheSize];
-		Data() : _begin{ 0 }, _end{ 0 } {}
+		Data() : _begin{ 0 }, _end{ 0 } {
+			memset(_data, 0, sizeof(_data));
+		}
+
 		void set_boader(unsigned int begin, unsigned int end) { /* 记录_data中存储的是文中的哪一部分数据：[_begin, _end) */
 			_begin = begin;
 			_end = end;
@@ -29,10 +32,12 @@ namespace PDF_CHECK {
 
 		bool Read(const std::wstring& path);
 		void Show() const;
+		
 		unsigned int Size() const { // 返回文件数据的字节数
 			return _file_size;
 		}
-		std::vector<char> get_data(unsigned int begin, unsigned int end) const; /* 读取范围：[begin, end] 注意vector不要太长,数据太大时，做上层封装，而不是一次性读到一个vector中 */
+
+		Bytes get_data(unsigned int begin, unsigned int end) const; /* 读取范围：[begin, end] 注意string不要太长,数据太大时，做上层封装，而不是一次性读到一个string中 */
 		char next() const; /* 会修改_current_pos 指针 */
 		char at(unsigned int) const;
 		char operator[](unsigned int) const; /* 这是个假的operator[]，因为返回值不是引用，所以只能读不能修改 */

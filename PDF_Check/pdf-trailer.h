@@ -1,7 +1,8 @@
 #ifndef DETECT_PDF_TRAILER_H_
 #define DETECT_PDF_TRAILER_H_
 
-#include "basic-type.h"
+#include <memory>
+#include "data-pool.h"
 
 namespace PDF_CHECK {
 	class PdfAnalyzeResult;

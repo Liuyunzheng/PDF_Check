@@ -33,13 +33,18 @@ namespace PDF_CHECK {
 		_data->Show();
 	}
 
-	std::vector<char> Pdf::get_data(unsigned int begin, unsigned int end) const {
+	Bytes Pdf::get_data(unsigned int begin, unsigned int end) const {
 		return _data->get_data(begin, end);
 	}
 
 	PdfAnalyzeReport Pdf::AnalyzeAll() const{
 		PdfAnalyzeReport report;
 
+		PdfAnalyzeResult head_result = AnalyzeHeader();
+		PdfAnalyzeResult body_result = AnalyzeBody();
+		PdfAnalyzeResult xref_result = AnalyzeXref();
+		PdfAnalyzeResult trailer_result = AnalyzeTrailer();
+		
 		return report;
 	}
 

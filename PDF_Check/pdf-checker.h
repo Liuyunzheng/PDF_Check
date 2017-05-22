@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <memory>
-#include "basic-type.h"
 #include "pdf.h"
 
 namespace PDF_CHECK {
@@ -25,11 +24,10 @@ namespace PDF_CHECK {
 		PdfChecker& operator = (const PdfChecker&) = delete;
 		PdfChecker& operator = (PdfChecker&&) = delete;
 
-
 		PdfAnalyzeReport GetReport(const std::wstring& path);
 		bool read_pdf(const std::wstring& path);
 		void ShowPdfData() const;
-		std::vector<char> get_pdf_data(unsigned int, unsigned int) const;
+		Bytes get_pdf_data(unsigned int, unsigned int) const;
 
 	private:
 		std::unique_ptr<Pdf> _pdf;

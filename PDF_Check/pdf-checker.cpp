@@ -32,11 +32,11 @@ namespace PDF_CHECK {
 			_pdf->Show();
 	}
 
-	std::vector<char> PdfChecker::get_pdf_data(unsigned int begin, unsigned int end) const {
+	Bytes PdfChecker::get_pdf_data(unsigned int begin, unsigned int end) const {
 		if (_pdf)
 			return _pdf->get_data(begin, end);
 		else {
-			std::vector<char> tmp{ '\0' };
+			Bytes tmp{ '\0' };
 			return tmp;
 		}
 	}

@@ -102,9 +102,9 @@ namespace PDF_CHECK {
 			throw std::out_of_range("DataPool::set_pos()");
 	}
 
-	std::vector<char> DataPool::get_data(unsigned int begin, unsigned int end) const {
-		std::vector<char> data;
-		end = (end >= _file_size ? _file_size : end);
+	Bytes DataPool::get_data(unsigned int begin, unsigned int end) const {
+		Bytes data;
+		end = (end >= _file_size ? _file_size - 1 : end);
 		for (unsigned int i = begin; i <= end; ++i)
 			data.push_back(at(i));
 
