@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 
 	PdfChecker checker;// { L"f:\\test.pdf" };
 	checker.ShowPdfData();
-	checker.GetReport(L"f:\\test.pdf");
+	checker.GetReport(L"f:\\test.doc");
 
 	system("pause");
 	return 0;

@@ -2,10 +2,11 @@
 #define DETECT_BASIC_TYPE_H_
 
 #include <string>
+#include <vector>
 
 namespace PDF_CHECK {
 
-	using Bytes = std::string;
+	using Bytes = std::vector < unsigned char > ; //std::string;
 
 }
 

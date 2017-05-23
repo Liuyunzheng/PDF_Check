@@ -32,7 +32,7 @@ namespace PDF_CHECK {
 	ScanResult AcScanner::Scan(const AcTree& tree, const Bytes& data, unsigned int begin, unsigned int end) const {
 		ScanResult result;
 		const AcNode *ptr = tree._get_root();
-		const unsigned int len = data.length();
+		const unsigned int len = data.size();
 		if (end == 0)
 			end = len;
 

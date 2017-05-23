@@ -16,7 +16,11 @@ namespace PDF_CHECK {
 		
 		for (auto& pair : off_key_pairs) {
 			std::cout << "offset: " << pair.first << " keyword: ";
-			std::cout << pair.second << std::endl;
+			//std::cout << pair.second << std::endl; // if Bytes is string
+			for (auto& c : pair.second) {
+				std::cout << std::hex << static_cast<int>(c);
+			}
+			std::cout << std::endl;
 		}
 		std::cout << "<<ScanResult::Show End>>\n";
 	}
