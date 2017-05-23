@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
 	}
 	std::cout << std::endl;
 
-	PdfChecker checker{ L"f:\\test.pdf" };
+	PdfChecker checker;// { L"f:\\test.pdf" };
 	checker.ShowPdfData();
 	checker.GetReport(L"f:\\test.pdf");
 

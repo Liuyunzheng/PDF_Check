@@ -63,15 +63,12 @@ namespace PDF_CHECK {
 		AcNode *ptr = nullptr;
 		std::queue<AcNode *> q;
 		q.push(_root);
-
 		while (!q.empty()) {
 			cur = q.front();
 			q.pop();
-		
 			for (int i = 0; i < AcNode::kCharCnt; ++i) {
 				if (cur->children[i]) {
 					ptr = cur->fail;
-					
 					while (ptr && ptr->children[i] == nullptr) ptr = ptr->fail;
 		
 					if (ptr == nullptr)

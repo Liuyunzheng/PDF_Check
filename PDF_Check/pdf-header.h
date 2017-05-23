@@ -16,7 +16,7 @@ namespace PDF_CHECK{
 		PdfHeader() = default;
 		~PdfHeader() = default;
 
-		PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data);
+		PdfAnalyzeResult Analyze(const std::unique_ptr<DataPool>& in_data) const;
 	};
 
 }
