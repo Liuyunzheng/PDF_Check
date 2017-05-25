@@ -33,18 +33,17 @@ namespace PDF_CHECK {
 		bool Read(const std::wstring& path);
 		void Show() const;
 		
-		unsigned int Size() const { // 返回文件数据的字节数
+		unsigned int size() const { // 返回文件数据的字节数
 			return _file_size;
 		}
 
 		Bytes get_data(unsigned int begin, unsigned int end) const; /* 读取范围：[begin, end] 注意string不要太长,数据太大时，做上层封装，而不是一次性读到一个string中 */
-		char next() const; /* 会修改_current_pos 指针 */
+		// void set_pos(unsigned int pos = 0); /* 指定_current_pos的位置 */
+		// char next() const; /* 会修改_current_pos 指针,使用该函数前需要先调用set_pos函数设置起始位置 */
 		char at(unsigned int) const;
 		char operator[](unsigned int) const; /* 这是个假的operator[]，因为返回值不是引用，所以只能读不能修改 */
 		unsigned int current_pos() const { return _current_pos; }
-
-	protected:
-		void set_pos(unsigned int pos = 0); /* 指定_current_pos的位置 */
+		
 
 	private:
 		bool saved_in_stack() const; /* is data saved in _data ? */

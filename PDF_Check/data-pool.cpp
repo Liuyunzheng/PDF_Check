@@ -62,12 +62,12 @@ namespace PDF_CHECK {
 		return _file_size < kCacheSize; /* 没毛病， 最多可以记录kCacheSize-1 Bytes数据到 _data,因为多了一个 '\0' */
 	}
 
-	char DataPool::next() const {
-		if (_current_pos >= _file_size)
-			throw std::out_of_range("DataPool::next()");
-		++_current_pos;
-		return at(_current_pos);
-	}
+	//char DataPool::next() const {
+	//	if (_current_pos >= _file_size)
+	//		throw std::out_of_range("DataPool::next()");
+	//	++_current_pos;
+	//	return at(_current_pos);
+	//}
 
 	char DataPool::operator[](unsigned int pos) const {
 		return at(pos);
@@ -95,18 +95,18 @@ namespace PDF_CHECK {
 		}
 	}
 
-	void DataPool::set_pos(unsigned int pos) {
-		if (pos <= _file_size)
-			_current_pos = pos;
-		else
-			throw std::out_of_range("DataPool::set_pos()");
-	}
+	//void DataPool::set_pos(unsigned int pos) {
+	//	if (pos <= _file_size)
+	//		_current_pos = pos;
+	//	else
+	//		throw std::out_of_range("DataPool::set_pos()");
+	//}
 
 	Bytes DataPool::get_data(unsigned int begin, unsigned int end) const {
-		Bytes data;
 		end = (end >= _file_size ? _file_size - 1 : end);
+		Bytes data(end + 1, '\0');
 		for (unsigned int i = begin; i <= end; ++i)
-			data.push_back(at(i));
+			data[i - begin] = at(i);
 
 		return data;
 	}
