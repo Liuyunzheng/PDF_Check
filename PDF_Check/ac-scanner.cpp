@@ -13,7 +13,7 @@ namespace PDF_CHECK {
 			end = len;
 
 		for (unsigned int i = begin; i < end; ++i) {
-			char pos = data[i];
+			unsigned char pos = data[i];
 			while (ptr->children[pos] == nullptr && ptr->fail)
 				ptr = ptr->fail;
 
