@@ -26,7 +26,8 @@ namespace PDF_CHECK {
 		bool Read(const std::wstring& path);
 		void Show() const;
 
-		Bytes get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
+		/** should not be too big (不应该太大，应该在上层实现对大数据的读取) */
+		Bytes get_data(unsigned int, unsigned int) const; 
 
 		PdfAnalyzeReport AnalyzeAll() const;
 		PdfAnalyzeResult AnalyzeHeader() const;

@@ -1,13 +1,17 @@
-﻿生成启动时间为 2017/7/19 15:20:20。
+﻿生成启动时间为 2017/7/19 15:41:55。
      1>项目“E:\Workspaces\Cplusplus\PDF_Check\PDF_Check\PDF_Check.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "ac-scanner.cpp" "ac-trie.cpp" main.cpp "pdf-body.cpp" "pdf-header.cpp" "pdf-trailer.cpp" "pdf-xref.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "ac-scanner.cpp" "ac-trie.cpp" "data-pool.cpp" main.cpp "pdf-body.cpp" "pdf-checker.cpp" "pdf-header.cpp" "pdf-trailer.cpp" "pdf-xref.cpp" pdf.cpp "scan-result.cpp"
+         scan-result.cpp
+         pdf-header.cpp
+         data-pool.cpp
          ac-scanner.cpp
          正在生成代码...
          正在编译...
+         pdf.cpp
          pdf-xref.cpp
          pdf-trailer.cpp
-         pdf-header.cpp
+         pdf-checker.cpp
          pdf-body.cpp
          main.cpp
          ac-trie.cpp
@@ -30,4 +34,4 @@
 
 生成成功。
 
-已用时间 00:00:03.19
+已用时间 00:00:05.27

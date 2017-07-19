@@ -6,7 +6,7 @@
 
 namespace PDF_CHECK {
 
-	using Bytes = std::vector < unsigned char > ; //std::string;
+	using Bytes = std::vector < unsigned char > ;
 
 }
 
