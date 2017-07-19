@@ -25,12 +25,13 @@ namespace PDF_CHECK {
 		PdfChecker& operator = (PdfChecker&&) = delete;
 
 		PdfAnalyzeReport GetReport(const std::wstring& path);
-		bool read_pdf(const std::wstring& path);
+		bool ReadPdf(const std::wstring& path);
 		void ShowPdfData() const;
+
 		Bytes get_pdf_data(unsigned int, unsigned int) const;
 
 	private:
-		std::unique_ptr<Pdf> _pdf;
+		std::unique_ptr<Pdf> pdf_;
 	};
 }
 

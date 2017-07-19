@@ -13,7 +13,8 @@ namespace PDF_CHECK {
 
 	struct AcNode {
 		static const int kCharCnt = 256;
-		AcNode() : _end{ false }, _len{ 0 } {
+		AcNode() 
+			: end{ false }, len{ 0 } {
 			for (int i = 0; i < kCharCnt; ++i)
 				children[i] = nullptr;
 		}
@@ -26,35 +27,30 @@ namespace PDF_CHECK {
 
 		AcNode *fail{ nullptr };
 		AcNode *children[kCharCnt];
-		Bytes _type{};
-		bool _end;
-		unsigned int _len;
+		Bytes type{};
+		bool end;
+		unsigned int len;
 	};
 
 	class AcScanner;
 
 	class AcTree {
-
 	public:
 		friend AcScanner;
 		AcTree() = default;
 		explicit AcTree(const std::vector<Bytes>& keyword_list);
-		~AcTree() {
-			delete _root;
-		}
+		~AcTree() { delete root_; }
 
 		void BuildAcTree(const std::vector<Bytes>& keyword_list);
 		void Show() const;
 		
 	private:
-		void _insert_ac_tree(const Bytes& keyword);
-		void _BuildAcAutomation();
-		const AcNode *_get_root() const {
-			return _root;
-		}
+		void InsertAcTrie(const Bytes& keyword);
+		void BuildAcAutomation();
+		const AcNode *GetRoot() const { return root_; }
 
 	private:
-		AcNode *_root{ nullptr };
+		AcNode *root_{ nullptr };
 	};
 }
 

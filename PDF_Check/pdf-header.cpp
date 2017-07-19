@@ -9,9 +9,9 @@
 namespace PDF_CHECK {
 
 	const std::vector<Bytes> PdfHeader::kKeyWordList{
-		{ '%', 'P', 'D', 'F' }, /*"%PDF"*/
-		{ 0x50, 0x4b, 0x03, 0x04 }, /* OFFICE DOCX */
-		{ 0xd0, 0xcf, 0x11, 0xe0 } /* OFFICE DOC */
+		{ '%', 'P', 'D', 'F', '-' }, /*"PDF Header"*/
+		{ 0x50, 0x4b, 0x03, 0x04 },  /* OFFICE DOCX Header*/
+		{ 0xd0, 0xcf, 0x11, 0xe0 }   /* OFFICE DOC Header*/
 	};
 
 	const AcTree PdfHeader::kAcTree{ kKeyWordList };

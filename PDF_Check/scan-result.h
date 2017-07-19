@@ -9,6 +9,7 @@ namespace PDF_CHECK {
 	
 	struct ScanResult {
 		std::map<unsigned int, Bytes> off_key_pairs;
+
 		void Add(unsigned int offset, const Bytes& keyword);
 		void Clear();
 		void Show() const;

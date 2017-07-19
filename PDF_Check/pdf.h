@@ -24,8 +24,10 @@ namespace PDF_CHECK {
 
 		bool Init();
 		bool Read(const std::wstring& path);
-		Bytes get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
 		void Show() const;
+
+		Bytes get_data(unsigned int, unsigned int) const; /* should not be too big (不应该太大，应该在上层实现对大数据的读取) */
+
 		PdfAnalyzeReport AnalyzeAll() const;
 		PdfAnalyzeResult AnalyzeHeader() const;
 		PdfAnalyzeResult AnalyzeBody() const;
@@ -33,11 +35,11 @@ namespace PDF_CHECK {
 		PdfAnalyzeResult AnalyzeTrailer() const;
 
 	private:
-		std::unique_ptr<DataPool> _data;
-		std::unique_ptr<PdfHeader> _header{ nullptr };
-		std::unique_ptr<PdfBody> _body{ nullptr };
-		std::unique_ptr<PdfXref> _xref{ nullptr };
-		std::unique_ptr<PdfTrailer> _trailer{ nullptr };
+		std::unique_ptr<DataPool> data_;
+		std::unique_ptr<PdfHeader> header_{ nullptr };
+		std::unique_ptr<PdfBody> body_{ nullptr };
+		std::unique_ptr<PdfXref> xref_{ nullptr };
+		std::unique_ptr<PdfTrailer> trailer_{ nullptr };
 	};
 }
 

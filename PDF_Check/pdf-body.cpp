@@ -9,15 +9,15 @@
 namespace PDF_CHECK{
 
 	const std::vector<Bytes> PdfBody::kKeyWordList{
-		{ 'o', 'b', 'j' },
 		{ '<', '<' },
 		{ '>', '>' },
-		{ 's', 't', 'r', 'e', 'a', 'm' },
-		{ 'e', 'n', 'd', 's', 't', 'r', 'e', 'a', 'm' },
-		{ 'e', 'n', 'd', 'o', 'b', 'j' },
+		{ 'o', 'b', 'j' },
 		{ 'x', 'r', 'e', 'f' },
+		{ '%', '%', 'E', 'O', 'F' },
+		{ 's', 't', 'r', 'e', 'a', 'm' },
+		{ 'e', 'n', 'd', 'o', 'b', 'j' },
 		{ 't', 'r', 'a', 'i', 'l', 'e', 'r' },
-		{ '%', '%', 'E', 'O', 'F' }
+		{ 'e', 'n', 'd', 's', 't', 'r', 'e', 'a', 'm' }
 	};
 
 	const AcTree PdfBody::kAcTree{ kKeyWordList };

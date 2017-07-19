@@ -12,6 +12,7 @@ namespace PDF_CHECK {
 		PdfAnalyzeReport() = default;
 		~PdfAnalyzeReport() = default;
 		PdfAnalyzeReport(const PdfAnalyzeReport&) = default;
+
 		PdfAnalyzeReport& operator = (const PdfAnalyzeReport&) = default;
 
 	};

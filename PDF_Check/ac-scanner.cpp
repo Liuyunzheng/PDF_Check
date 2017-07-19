@@ -7,7 +7,7 @@ namespace PDF_CHECK {
 
 	ScanResult AcScanner::Scan(const AcTree& tree, const DataPool& data, unsigned int begin, unsigned int end) const {
 		ScanResult result;
-		const AcNode *ptr = tree._get_root();
+		const AcNode *ptr = tree.GetRoot();
 		const unsigned int len = data.size();
 		if (end == 0)
 			end = len;
@@ -20,9 +20,9 @@ namespace PDF_CHECK {
 			if (ptr->children[pos])
 				ptr = ptr->children[pos];
 
-			if (ptr->_end) {
-				const unsigned int offset = i - ptr->_type.size() + 1;
-				result.Add(offset, ptr->_type);
+			if (ptr->end) {
+				const unsigned int offset = i - ptr->type.size() + 1;
+				result.Add(offset, ptr->type);
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace PDF_CHECK {
 
 	ScanResult AcScanner::Scan(const AcTree& tree, const Bytes& data, unsigned int begin, unsigned int end) const {
 		ScanResult result;
-		const AcNode *ptr = tree._get_root();
+		const AcNode *ptr = tree.GetRoot();
 		const unsigned int len = data.size();
 		if (end == 0)
 			end = len;
@@ -44,9 +44,9 @@ namespace PDF_CHECK {
 			if (ptr->children[pos])
 				ptr = ptr->children[pos];
 
-			if (ptr->_end) {
-				const unsigned int offset = i - ptr->_type.size() + 1;
-				result.Add(offset, ptr->_type);
+			if (ptr->end) {
+				const unsigned int offset = i - ptr->type.size() + 1;
+				result.Add(offset, ptr->type);
 			}
 		}
 

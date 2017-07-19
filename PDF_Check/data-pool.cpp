@@ -2,46 +2,53 @@
 
 namespace PDF_CHECK {
 
-	DataPool::DataPool(const std::wstring& path) : _path(path), _file{ new std::ifstream{ path, std::ios::binary } }, _pbuf{ _file->rdbuf() } {
+	DataPool::DataPool(const std::wstring& path) 
+		: path_(path), 
+		  file_{ new std::ifstream{ path, std::ios::binary } }, 
+		  pbuf_{ file_->rdbuf() } {
 		Read(path); /* open file */
-
 	}
 
 	DataPool::~DataPool() {
-		_pbuf->close();
+		pbuf_->close();
 	}
 
-	bool DataPool::_read(const std::wstring& path) {
+	bool DataPool::Read_(const std::wstring& path) {
 		try {
-			if (_path != path) {
-				_pbuf->close();
-				_pbuf->open(path, std::ios::in | std::ios::binary);
-				_path = path;
+			if (path_ != path) {
+				pbuf_->close();
+				pbuf_->open(path, std::ios::in | std::ios::binary);
+				path_ = path;
 			}
-			_current_pos = 0;
-			_pbuf->pubseekpos(_current_pos, std::ios::in);
+			current_pos_ = 0;
+			pbuf_->pubseekpos(current_pos_, std::ios::in);
 
 		}
 		catch (...) {
 			return false;
 		}
-		if (!_pbuf->is_open())
+
+		if (!pbuf_->is_open())
 			return false;
+		
 		return true;
 	}
 
 	bool DataPool::Read(const std::wstring& path) {
-		if (!_read(path)) return false;
+		if (!Read_(path)) {
+			return false;
+		}
+
 		try {
-			_file_size = static_cast<size_t>(_pbuf->pubseekoff(0, std::ios::end)); /* record file size */
-			_pbuf->pubseekpos(0, std::ios::in);
-			if (_file_size < kCacheSize) { /* read data into buffer (如果文档小于kCacheSize Bytes直接存储在_data中，内存访问更快) */
-				_pbuf->sgetn(_cache._data, _file_size);
-				_cache._data[_file_size] = '\0';
-				_cache.set_boader(0, _file_size);
-			}
-			else {  /* read by _pbuf later (文件大于或等于kCacheSize Bytes时，通过_pbuf指针读取，速度会慢一些，但是省内存) */
-				_pbuf->pubseekpos(0, std::ios::in);
+			file_size_ = static_cast<size_t>(pbuf_->pubseekoff(0, std::ios::end)); /* record file size */
+			pbuf_->pubseekpos(0, std::ios::in);
+			if (file_size_ < kCacheSize) { /* read data into buffer (如果文档小于kCacheSize Bytes直接存储在data中，内存访问更快) */
+				pbuf_->sgetn(cache_.data, file_size_);
+				cache_.data[file_size_] = '\0';
+				cache_.SetBoader(0, file_size_);
+			} 
+			else {  /* read by pbuf_ later (文件大于或等于kCacheSize Bytes时，通过pbuf_指针读取，速度会慢一些，但是省内存) */
+				pbuf_->pubseekpos(0, std::ios::in);
 			}
 
 		}
@@ -53,20 +60,20 @@ namespace PDF_CHECK {
 	}
 
 	void DataPool::Show() const {
-		for (unsigned int i = 0; i < _file_size; ++i)
+		for (unsigned int i = 0; i < file_size_; ++i)
 			std::cout << at(i);
 		std::cout << std::endl;
 	}
 
-	bool DataPool::saved_in_stack() const {
-		return _file_size < kCacheSize; /* 没毛病， 最多可以记录kCacheSize-1 Bytes数据到 _data,因为多了一个 '\0' */
+	bool DataPool::SaveInStack() const {
+		return file_size_ < kCacheSize; /* 没毛病， 最多可以记录kCacheSize-1 Bytes数据到 data,因为多了一个 '\0' */
 	}
 
 	//char DataPool::next() const {
-	//	if (_current_pos >= _file_size)
+	//	if (current_pos_ >= file_size_)
 	//		throw std::out_of_range("DataPool::next()");
-	//	++_current_pos;
-	//	return at(_current_pos);
+	//	++current_pos_;
+	//	return at(current_pos_);
 	//}
 
 	char DataPool::operator[](unsigned int pos) const {
@@ -74,36 +81,36 @@ namespace PDF_CHECK {
 	}
 
 	char DataPool::at(unsigned int pos) const {
-		if (pos >= _file_size)
+		if (pos >= file_size_)
 			throw std::out_of_range("DataPool::at");
 
-		if (saved_in_stack()) {
-			return _cache._data[pos];
+		if (SaveInStack()) {
+			return cache_.data[pos];
 		}
 		else {
-			if (_cache._begin <= pos && pos < _cache._end) /* 命中(注意: pos < _cache.end) */
-				return _cache._data[pos - _cache._begin];
+			if (cache_.begin <= pos && pos < cache_.end) /* 命中(注意: pos < cache_.end) */
+				return cache_.data[pos - cache_.begin];
 			else { /* 提高命中率，避免多次读文件 */
-				_pbuf->pubseekpos(pos, std::ios::in);
-				unsigned int len = _file_size - pos;
+				pbuf_->pubseekpos(pos, std::ios::in);
+				unsigned int len = file_size_ - pos;
 				len = (len >= kCacheSize ? kCacheSize - 1 : len);
-				_pbuf->sgetn(_cache._data, len);
-				_cache._data[len] = '\0';
-				_cache.set_boader(pos, pos + len + 1);
-				return _cache._data[pos - _cache._begin];
+				pbuf_->sgetn(cache_.data, len);
+				cache_.data[len] = '\0';
+				cache_.SetBoader(pos, pos + len + 1);
+				return cache_.data[pos - cache_.begin];
 			}
 		}
 	}
 
 	//void DataPool::set_pos(unsigned int pos) {
-	//	if (pos <= _file_size)
-	//		_current_pos = pos;
+	//	if (pos <= file_size_)
+	//		current_pos_ = pos;
 	//	else
 	//		throw std::out_of_range("DataPool::set_pos()");
 	//}
 
 	Bytes DataPool::get_data(unsigned int begin, unsigned int end) const {
-		end = (end >= _file_size ? _file_size - 1 : end);
+		end = (end >= file_size_ ? file_size_ - 1 : end);
 		Bytes data(end + 1, '\0');
 		for (unsigned int i = begin; i <= end; ++i)
 			data[i - begin] = at(i);
