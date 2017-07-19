@@ -1,5 +1,5 @@
 /*
-* A general scan methods library, current using Ac-Tree matching method
+* A general scan methods library, current using Ac-Trie matching method
 * 今后可以扩充其他的检测方法
 */
 

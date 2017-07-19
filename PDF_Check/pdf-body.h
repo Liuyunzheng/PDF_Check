@@ -8,12 +8,12 @@ namespace PDF_CHECK {
 
 	struct ScanResult;
 	class PdfAnalyzeResult;
-	class AcTree;
+	class AcTrie;
 
 	class PdfBody {
 	private:
 		static const std::vector<Bytes> kKeyWordList;
-		static const AcTree kAcTree;
+		static const AcTrie kAcTrie;
 
 	public:
 		PdfBody() = default;

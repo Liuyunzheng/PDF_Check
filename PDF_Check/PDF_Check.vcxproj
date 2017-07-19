@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ac-scanner.cpp" />
-    <ClCompile Include="ac-tree.cpp" />
+    <ClCompile Include="ac-trie.cpp" />
     <ClCompile Include="data-pool.cpp" />
     <ClCompile Include="pdf-analyze-report.cpp" />
     <ClCompile Include="pdf-checker.cpp" />
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ac-scanner.h" />
-    <ClInclude Include="ac-tree.h" />
+    <ClInclude Include="ac-trie.h" />
     <ClInclude Include="data-pool.h" />
     <ClInclude Include="pdf-analyze-report.h" />
     <ClInclude Include="pdf-analyze-result.h" />

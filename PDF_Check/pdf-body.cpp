@@ -3,7 +3,7 @@
 #include "pdf-body.h"
 #include "scan-result.h"
 #include "pdf-analyze-result.h"
-#include "ac-tree.h"
+#include "ac-trie.h"
 #include "ac-scanner.h"
 
 namespace PDF_CHECK{
@@ -20,11 +20,11 @@ namespace PDF_CHECK{
 		{ 'e', 'n', 'd', 's', 't', 'r', 'e', 'a', 'm' }
 	};
 
-	const AcTree PdfBody::kAcTree{ kKeyWordList };
+	const AcTrie PdfBody::kAcTrie{ kKeyWordList };
 
 	ScanResult PdfBody::Scan(const std::unique_ptr<DataPool>& in_data) const {
 		AcScanner scanner;
-		ScanResult scan_result = scanner.Scan(kAcTree, *in_data.get());
+		ScanResult scan_result = scanner.Scan(kAcTrie, *in_data.get());
 		scan_result.Show();
 
 		return scan_result;

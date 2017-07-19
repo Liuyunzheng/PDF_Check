@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ac-tree.h"
+#include "ac-trie.h"
 #include "data-pool.h"
 #include "ac-scanner.h"
 #include "scan-result.h"
@@ -10,12 +10,12 @@ using namespace PDF_CHECK;
 
 int main(int argc, char **argv) {
 	std::vector<Bytes> keyword{ { 'a', 'b', 'c' }, { 'c', 'b', 'a' } };
-	AcTree tree{ keyword };
-	tree.Show();
+	AcTrie trie{ keyword };
+	trie.Show();
 
 	DataPool data{ L"f:\\test.pdf" };
 	AcScanner scanner;
-	ScanResult result = scanner.Scan(tree, data);
+	ScanResult result = scanner.Scan(trie, data);
 	// result.Show();
 
 	std::vector<unsigned int> offsets = result.Find({ 'a', 'b', 'c' });

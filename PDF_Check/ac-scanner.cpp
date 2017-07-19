@@ -1,13 +1,13 @@
 #include "ac-scanner.h"
-#include "ac-tree.h"
+#include "ac-trie.h"
 #include "data-pool.h"
 
 
 namespace PDF_CHECK {
 
-	ScanResult AcScanner::Scan(const AcTree& tree, const DataPool& data, unsigned int begin, unsigned int end) const {
+	ScanResult AcScanner::Scan(const AcTrie& trie, const DataPool& data, unsigned int begin, unsigned int end) const {
 		ScanResult result;
-		const AcNode *ptr = tree.GetRoot();
+		const AcNode *ptr = trie.GetRoot();
 		const unsigned int len = data.size();
 		if (end == 0)
 			end = len;
@@ -29,9 +29,9 @@ namespace PDF_CHECK {
 		return result;
 	}
 
-	ScanResult AcScanner::Scan(const AcTree& tree, const Bytes& data, unsigned int begin, unsigned int end) const {
+	ScanResult AcScanner::Scan(const AcTrie& trie, const Bytes& data, unsigned int begin, unsigned int end) const {
 		ScanResult result;
-		const AcNode *ptr = tree.GetRoot();
+		const AcNode *ptr = trie.GetRoot();
 		const unsigned int len = data.size();
 		if (end == 0)
 			end = len;
